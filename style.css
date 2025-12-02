@@ -1,0 +1,763 @@
+/* Brand System v1.0 */
+:root {
+    /* Primary Colors */
+    --color-os-black: #0A0A0C;
+    --color-neon-green: #22C55E;
+    --color-neon-purple: #CB6CFF;
+    --color-white: #FFFFFF;
+
+    /* Secondary Colors */
+    --color-slate-900: #111214;
+    --color-slate-800: #16171A;
+    --color-slate-500: #A9B2BE;
+    --color-slate-400: #9CA3AF;
+    --color-slate-200: #E5E7EB;
+    --color-dim-green: #1FA14A;
+
+    /* Text Colors */
+    --color-text-primary: #E5E7EB;
+    --color-text-secondary: #9CA3AF;
+
+    /* Glows */
+    --glow-green: 0 0 20px rgba(34, 197, 94, 0.35);
+    --glow-purple: 0 0 20px rgba(203, 108, 255, 0.35);
+
+    /* Typography */
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Geist Sans', 'Inter', sans-serif;
+
+    /* Layout */
+    --content-width: 1000px;
+    --spacing-unit: 8px;
+    --nav-height: 80px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-os-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-slate-800);
+    border-radius: 5px;
+    border: 2px solid var(--color-os-black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-slate-500);
+}
+
+::selection {
+    background: var(--color-neon-green);
+    color: var(--color-os-black);
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-os-black);
+    background-image: radial-gradient(circle at 50% 0%, #131417 0%, var(--color-os-black) 80%);
+    color: var(--color-text-primary);
+    font-family: var(--font-mono);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.45;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Protocol Grid Background */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.015) 2px, transparent 2px);
+    background-size: 10px 10px;
+    pointer-events: none;
+    z-index: 0;
+    animation: gridRotate 30s linear infinite;
+}
+
+@keyframes gridRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0.2deg);
+    }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    /* Regular as per guidelines */
+    color: var(--color-white);
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+/* Text Emphasis */
+.text-emphasis-green {
+    color: var(--color-neon-green);
+}
+
+.text-emphasis-purple {
+    color: var(--color-neon-purple);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.mono {
+    font-family: var(--font-mono);
+}
+
+/* Utilities */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    /* Mobile padding */
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 96px;
+        /* Desktop padding */
+    }
+}
+
+.content-width {
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 12, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-mono);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-text {
+    margin-left: 0.5rem;
+}
+
+/* Logo Components */
+.bracket {
+    color: var(--color-neon-purple);
+}
+
+.chevron {
+    color: var(--color-neon-green);
+}
+
+.underscore {
+    color: var(--color-white);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-slate-500);
+}
+
+.nav-links a:hover {
+    color: var(--color-neon-green);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.footer-logo-img {
+    max-width: 80px;
+    height: auto;
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-logo-img:hover {
+    opacity: 1;
+}
+
+.btn-nav {
+    color: var(--color-neon-green) !important;
+}
+
+/* Hero */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: var(--nav-height);
+}
+
+.hero-content {
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.hero-label {
+    font-family: var(--font-mono);
+    color: var(--color-slate-500);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.hero h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    line-height: 1.2;
+    margin-bottom: 32px;
+    text-shadow: none;
+    text-transform: lowercase;
+    color: var(--color-white);
+    min-height: 1.2em;
+    opacity: 0;
+    animation: fadeInUp 0.4s ease-out 0.1s forwards;
+}
+
+.hero-.card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    color: var(--color-neon-green);
+    font-family: var(--font-mono);
+    letter-spacing: 0.015em;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.hero-.card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background: var(--color-neon-green);
+}
+
+.card p {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+}
+
+.prompt-logo {
+    display: none;
+    /* Hide the prompt logo since we use cursor logo now */
+}
+
+.hero-sub {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    color: var(--color-slate-500);
+    max-width: 800px;
+    margin: 0 auto 32px;
+    /* 24-32px */
+}
+
+@media (min-width: 768px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    padding: 12px 24px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: transparent;
+    color: var(--color-neon-green);
+    border: 1px solid var(--color-neon-green);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.25);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: rgba(34, 197, 94, 0.1);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
+    transform: translateY(-1px);
+}
+
+/* Services */
+.services {
+    padding: 64px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2x2 grid for 4 items */
+    }
+}
+
+.card {
+    background-color: var(--color-slate-900);
+    padding: 2rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-1px);
+    border-color: var(--color-dim-green);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    /* Subtle shadow */
+}
+
+.card h3 {
+    font-size: 1rem;
+    color: var(--color-neon-green);
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-slate-500);
+    /* Ensure muted color */
+}
+
+/* Services Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    /* Tuned from 3rem */
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card {
+    background-color: var(--color-slate-900);
+    padding: 1.5rem;
+    border: 1px solid #1F1F22;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Staggered Entry */
+.card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.card:hover {
+    border-color: var(--color-neon-green);
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.15);
+    transform: translateY(-2px);
+}
+
+.card h3 {
+    font-family: var(--font-mono);
+    color: var(--color-neon-green);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    /* Adjusted for hierarchy */
+    white-space: nowrap;
+    /* Prevent wrapping */
+    display: inline-block;
+    /* Treat like a label/button */
+}
+
+.card p {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-slate-500);
+    margin-bottom: 0.75rem;
+    /* Tightened from 1rem */
+    position: relative;
+    z-index: 2;
+}
+
+.card strong {
+    color: var(--color-white);
+    font-weight: 700;
+}
+
+/* Scanline Animation */
+/* Scanline Animation */
+.card {
+    position: relative;
+    overflow: hidden;
+    /* Contain the scanline */
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.1), transparent);
+    transition: none;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    /* Hide by default */
+}
+
+.card:hover::after {
+    opacity: 1;
+    /* Show on hover */
+    animation: scanline 1.5s linear;
+}
+
+@keyframes scanline {
+    0% {
+        top: -20%;
+    }
+
+    100% {
+        top: 120%;
+    }
+}
+
+/* Footer */
+footer {
+    background: var(--color-os-black);
+    padding: 0 0 48px 0;
+    /* Padding handled by container and divider margin */
+    text-align: center;
+    font-family: var(--font-mono);
+}
+
+/* Footer OS-Style */
+.footer-os {
+    padding: 48px 0 32px 0;
+    background-color: var(--color-os-black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo-os {
+    width: 130px;
+    height: auto;
+    opacity: 0.92;
+}
+
+.footer-text-os {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-slate-500);
+    line-height: 1.3;
+    text-align: center;
+}
+
+.footer-text-os p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-slate-500);
+}
+
+.footer-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    margin-bottom: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.footer-logo-img {
+    max-width: 80px;
+    height: auto;
+    display: block;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-logo-img:hover {
+    opacity: 1;
+}
+
+.footer-container {
+    color: var(--color-slate-500);
+    font-size: 12px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-glyph {
+    color: var(--color-neon-purple);
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-glyph .chevron {
+    color: var(--color-neon-green);
+}
+
+.footer-glyph .underscore {
+    color: var(--color-white);
+}
+
+/* Brackets inherit white or can be purple if desired, user said "purple brackets" in general but footer glyph example showed [ >_ ] */
+/* User CSS example: .footer-glyph { color: #CB6CFF; } for brackets */
+/* Let's target brackets specifically if needed, but for now the span classes in HTML handle colors if I reuse them. */
+/* Wait, I didn't put span classes in the footer HTML replacement for brackets, only chevron/underscore. */
+/* Let's fix the CSS to color the glyph text if it's plain text, or rely on spans. */
+/* The HTML I wrote: <div class="footer-glyph">[ <span class="chevron">&gt;</span><span class="underscore">_</span> ]</div> */
+/* So the brackets are text nodes. I should color the parent .footer-glyph to purple? */
+/* User said: .footer-glyph { color: #CB6CFF; } */
+
+.footer-line {
+    margin-top: 8px;
+}
+
+/* Animations */
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Section */
+.hero {
+    padding: 160px 0 96px 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Scanline Overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.01) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: scanlineMove 10s linear infinite;
+}
+
+@keyframes scanlineMove {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(50%);
+    }
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 2.75rem;
+    min-height: 120px;
+    letter-spacing: -0.04em;
+    opacity: 0;
+    animation: fadeInUp 250ms ease-out 150ms forwards;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Cursor for typing */
+.cursor {
+    display: inline-block;
+    color: var(--color-neon-green);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+.cursor-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8em;
+    /* Slightly smaller than heading */
+    vertical-align: middle;
+    position: relative;
+    z-index: 2;
+    cursor: default;
+    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.3)) drop-shadow(0 0 4px rgba(203, 108, 255, 0.2));
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+.cursor-logo:hover {
+    filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.4)) drop-shadow(0 0 6px rgba(203, 108, 255, 0.3));
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.3)) drop-shadow(0 0 4px rgba(203, 108, 255, 0.2));
+    }
+
+    50% {
+        filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.4)) drop-shadow(0 0 6px rgba(203, 108, 255, 0.3));
+    }
+}
+
+.cursor-logo .bracket {
+    color: var(--color-neon-purple);
+}
+
+.cursor-logo .chevron {
+    color: var(--color-neon-green);
+}
+
+.cursor-logo .underscore {
+    color: var(--color-white);
+}
+
+.cursor-logo.stopped {
+    animation: none;
+    /* Stop blinking */
+    opacity: 1;
+    /* Ensure visible */
+}
+
+/* Mobile Nav Hide */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* TODO: Add mobile menu if requested */
+    }
+}
